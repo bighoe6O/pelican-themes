@@ -42,6 +42,8 @@
     <meta name="description" content="{{ SITEDESCRIPTION }}" />
     <meta name="author" content="{{ AUTHOR }}" />
     {% endblock head %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/stork.css">
+    <link rel="stylesheet" media="screen and (prefers-color-scheme: dark)" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/stork-dark.css">
 </head>
 <body>
     {% if DISPLAY_HEADER or DISPLAY_HEADER is not defined %}
@@ -100,5 +102,11 @@
         <div class="clear"></div>
     </div>
 {% include 'analytics.html' %}
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/stork.js"></script>
+    <script>
+        stork.initialize("{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/stork.wasm")
+        stork.downloadIndex("sitesearch", "{{ SITEURL }}/search-index.st")
+        stork.attach("sitesearch")
+    </script>
 </body>
 </html>
